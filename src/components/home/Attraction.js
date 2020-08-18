@@ -24,7 +24,7 @@ const Attraction = props => {
                 "Authorization": `Token ${localStorage.getItem("kennywood_token")}`
             },
             "body": JSON.stringify({
-                "ride_id": props.ride.id,
+                "attraction_id": props.ride.id,
                 "starttime": starttime.current.value
             })
         })
