@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import ItineraryDialog from "./ItineraryDialog"
 import useModal from "../../hooks/ui/useModal"
 import "./MyItinerary.css"

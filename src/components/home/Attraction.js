@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 
 const Attraction = props => {
-    let dialog = null
+    const dialog = useRef()
     const starttime = useRef()
     const [modalIsOpen, setIsOpen] = useState(false)
 
@@ -9,9 +9,9 @@ const Attraction = props => {
         setIsOpen(!modalIsOpen)
 
         if (modalIsOpen) {
-            dialog.removeAttribute("open")
+            dialog.current.removeAttribute("open")
         } else {
-            dialog.setAttribute("open", true)
+            dialog.current.setAttribute("open", true)
         }
     }
 
@@ -36,7 +36,6 @@ const Attraction = props => {
     }
 
     useEffect(() => {
-        dialog = document.querySelector("#dialog--time")
 
         const handler = e => {
             // Close all dialogs when ESC is pressed, and close search field
@@ -54,7 +53,7 @@ const Attraction = props => {
 
     return (
         <>
-            <dialog id="dialog--time" className="dialog--time">
+            <dialog ref={dialog} id={props.ride.id} className="dialog--time">
                 <label htmlFor="starttime">When do you want to ride?</label>
                 <input ref={starttime} type="text" name="starttime" autoFocus required />
 
@@ -79,4 +78,4 @@ const Attraction = props => {
     )
 }
 
-export default Attraction
+export default Attraction;
